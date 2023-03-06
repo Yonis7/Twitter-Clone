@@ -1,0 +1,40 @@
+.text-area-container textarea{
+  width: 100%;
+  background-color: transparent;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 5px solid black;
+  }
+  
+  .tweet-button-container{
+   display: flex;
+   justify-content: space-between;
+  }
+
+  article.tweet {
+    border: 2px solid black;
+    padding: 1em;
+    margin: 1em 0;
+  }
+
+  article.tweet:hover {
+    box-shadow: 5px 5px black;
+  }
+  article.tweet header, article.tweet footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  article.tweet footer div i:hover{
+    color: green;
+
+  }
+
+  article.tweet footer {
+    padding-top: 0.2em;
+    border-top: 2px solid black;
+  }
+
+  
