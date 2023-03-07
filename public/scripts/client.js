@@ -61,3 +61,19 @@
         });
     });
   });
+
+  $(document).ready(function() {
+    const loadTweets = function() {
+      $.ajax({
+        url: '/tweets',
+        method: 'GET',
+        dataType: 'json',
+        success: function(response) {
+          renderTweets(response);
+        },
+        error: function(error) {
+          console.error(error);
+        }
+      });
+    }
+  }
