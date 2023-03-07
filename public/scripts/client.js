@@ -77,3 +77,37 @@
       });
     }
   }
+
+  $("#formTweet").submit(function (event) {
+    let maxTweetVal = 140;
+    let tweet = $("#form_textarea").val().length;
+    let tweetError = false;
+    if (tweet == "" || tweet == null) {
+      tweetError = true;
+      $("#newtweet_empty").slideDown("slow");
+      $("#newtweet_maxerror").slideUp("slow");
+    }
+    if (tweet > maxTweetVal) {
+      tweetError = true;
+      $("#newtweet_maxerror").slideDown("slow");
+      $("#newtweet_empty").slideUp("slow");
+    }
+    if (!tweetError) {
+      var formValues = $(this).serialize();
+      $("#newtweet_maxerror").slideUp("slow");
+      $("#newtweet_empty").slideUp("slow");
+      $.ajax({
+        type: "POST",
+        url: "http://localhost:8080/tweets",
+        data: formValues,
+      }).then(function () {
+        $.get("./tweets").then(function (data) {
+          $("#form_textarea").val("");
+          const index = data.length - 1;
+          const $tweet = createTweetElement(data[index]);
+          $("#tweets-container").prepend($tweet);
+        });
+      });
+    }
+    event.preventDefault();
+  });
