@@ -1,14 +1,55 @@
 nav {
-  height: 120px;
-  width: 100%;
+  position: fixed;
+  height: 100px;
   background-color: #4056A1;
-  color: #ffffff;
-  font-family: 'Bungee', sans-serif;
+  color: #fff;
+  width: 100vw;
+  padding: 1.5em 1.5em;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 1.5em;
-  box-sizing: border-box;
-  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9997;
+}
 
-  }
+.logo {
+  font-family: "Bungee", sans-serif;
+  float: left;
+  margin-left: 10px;
+  font-size: 1.5em;
+  color: #fff;
+}
+
+.nav-right {
+  font-family: "Source Sans Pro", sans-serif;
+  display: block;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.nav_text {
+  position: fixed;
+  top: 1.5em;
+  right: 2.5em;
+  cursor: pointer;
+  color: #fff;
+  float: right;
+  text-decoration: none;
+}
+
+.navText--borderless {
+  text-align: center;
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 20px;
+  font-weight: 300;
+}
+
+.btn_icon {
+  font-size: 1em;
+  color: #f13c20;
+  margin-top: 0.2em;
+  animation: float 2s infinite ease;
+}
