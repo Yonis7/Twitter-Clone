@@ -6,98 +6,77 @@
 
     <!-- External CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@1,300;1,600&display=swap"
-      rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-      crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://kit.fontawesome.com/7910ecf093.js" crossorigin="anonymous"></script>
-
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,300;0,600;1,300;1,600&display=swap" rel="stylesheet">  
     <!-- App CSS -->
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/header.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
-
-
-
-
-
+    
+    <link rel="stylesheet" href="styles/tweets.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/formValidation.css" type="text/css"/>
+    <link rel ="stylesheet" href ="styles/layout.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/nav.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/header.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/new-tweet.css" type="text/css"/>
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/5671d169c2.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"></script>
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
-    <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
-
+    <script src="/scripts/composer-char-counter.js" type="text/javascript"></script>
+   
   </head>
 
   <body>
     <!-- Top nav bar (fixed) -->
     <nav>
-      <span>tweeter</span>
-      <span>Write a tweet
-        <i class="fa-solid fa-angles-down"></i>
-      </span>
-  
-    </nav>
-  
-    <!-- Page-specific (main) content here -->
-    <header class="header">
-      <div>
-        <img src="/images/profile-hex.png">
-      </div>
-      <br>
-      <div>
-        <h2>Your Name</h2>
-      </div>
-    </header>
-
+      <span class="logo">tweeter</span>
+        <div class ="nav-right">
+        <a href="#top" class="nav_text navText--borderless" title="Create a Tweet">
+          <span class="bold">Write</span> a new tweet
+          <br/>
+          <i class="btn_icon fas fa-angle-double-down"></i>
+        </a>
+     </div>
+     </nav>
+    <!-- User Profile-->
+    <aside>
+        <div class="profile">
+         <img class="profile_image" src="images/profile-hex.png"/>
+        </div>
+        <br>
+        <div class="profile_name">
+          <h2><span class="profile--bold">Amy</span>  Mansell</h2>
+        </div>
+    </aside>
     <!-- Page-specific (main) content here -->
     <main class="container">
+      <!-- Error container for validation error messages -->
+      <section class="error-container" id="newtweet_maxerror"><i class="fas fa-exclamation-triangle"></i>
+      <span>Too long, There is a limit of 140 characters.</span>
+         <i class="fas fa-exclamation-triangle"></i>
+      </section>
+      <section class="error-container" id="newtweet_empty"><i class="fas fa-exclamation-triangle"></i>
+        <span>Please enter data before clicking Tweet button.</span> <i class="fas fa-exclamation-triangle"></i>
+      </section>
       <section class="new-tweet">
-        <h2>Compose Tweet</h2>
-        <form action="/tweets" method="POST">
-          <div class="text-area-container">
-            <textarea placeholder="what are you humming about?" name="text"
-            id="tweet-text"></textarea> 
-          </div>
-
-          <div class="tweet-button-container"> 
-            <button type="submit">Tweet</button>
-            <output name="counter" class="counter" for="tweet-text">140</output>
+        <h2 style="margin-top: 50px;"></h2>
+        
+        <!-- form submission-->
+        <form name="newtweet_form" id="formTweet" action="./tweets" method="POST" Content-Type="application/x-www-form-urlencoded">
+          <textarea name="text" class="form_textarea" id="form_textarea" placeholder="What are you humming about?"></textarea>
+          <div>
+            <input type="submit" value="Tweet" id="btnSubmit" class="form_input">
+            <span class="form_counter" id="form_counter">140</span>
           </div>
         </form>
       </section>
-
-        <section class="tweets-container">
-          <article class="tweet">
-            <header>
-              <div>
-              <img width = "20px" src="/images/profile-hex.png"> 
-                    <span>Newton</span>
-              </div>
-              <p>@SirIsaac</p>
-            </header>
-            <p>Hello this is a Tweet</p>
-            <footer>
-              <p>10 Days Ago</p>
-              <div>
-                <i class="fas fa-retweet"></i>
-    
-                <i class="far fa-heart"></i>
-    
-                <i class="far fa-envelope"></i>
-              </div>
-            </footer>
-          </article>
-        </section>
-    </main>
-
+      <!-- tweeter list-->
+      <section id="tweets-container">
+      </section>
+  </main>
+  
   </body>
 </html>
