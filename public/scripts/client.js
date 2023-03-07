@@ -45,3 +45,19 @@
       renderTweets(dataReversed);
     });
   };
+
+
+  $(document).ready(function() {
+    $('#new-tweet-form').on('submit', function(event) {
+      event.preventDefault(); // prevent the form from submitting via HTTP
+      const formData = $(this).serialize(); // serialize the form data
+      $.post('/tweets', formData) // send the data to the server
+        .then(function() {
+          console.log('Data sent to server successfully!');
+          // Now you can update the tweet list without a page refresh
+        })
+        .catch(function(error) {
+          console.log('Error sending data to server:', error);
+        });
+    });
+  });
