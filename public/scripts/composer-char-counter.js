@@ -1,18 +1,18 @@
-$(document).ready(function() {
-  const textarea = $("#tweet-text");
-  const counter = $(".counter");
+/* eslint-env jquery */
+$(document).ready(function () {
+  let counter = 140;
 
-  $("#tweet-text").on("input", function() {
-    const remaining = 140 - textarea.val().length;
-    counter.text(remaining);
-    //Debugging
-    // console.log(this)
-    if (remaining < 0) {
-      counter.css("color", "red");
+  $("#form_textarea").on("keyup", function (event) {
+    let txtVal = $(this).val().length;
+    let updatedCounter = counter - txtVal;
+    $("#form_counter").text(updatedCounter);
+    if (txtVal > counter) {
+      $(".form_counter").css({ color: "red" });
     } else {
-      counter.css("color", "");
+      $(".form_counter").css({ color: "black" });
     }
   });
 });
+
 
 // const $tweet = $(`<article class="tweet">Hello world</article>`);

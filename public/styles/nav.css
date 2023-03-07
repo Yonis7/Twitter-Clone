@@ -53,3 +53,23 @@ nav {
   margin-top: 0.2em;
   animation: float 2s infinite ease;
 }
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+    -webkit-transform: translateY(0);
+  }
+  50% {
+    transform: translateY(0.5rem);
+    -webkit-transform: translateY(0.5rem);
+  }
+  100% {
+    transform: translateY(0);
+    -webkit-transform: translateY(0);
+  }
+}
+@media only screen and (max-width: 1025px) {
+  nav {
+    background: none;
+  }
+}
