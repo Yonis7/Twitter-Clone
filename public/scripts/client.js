@@ -4,6 +4,9 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+$(document).ready(function () {
+ 
+
   function createTweetElement(tweet) {
     const calculateDate = timeago.format(tweet.created_at);
     const newTweet = `
@@ -16,7 +19,7 @@
           <time class ="tweet--handle">${tweet.user.handle}</time>
         </header>
         <div class="tweet-body">
-          <p>${escape(tweet.content.text)}</p>
+          <p>${(tweet.content.text)}</p>
         </div>
        
         <footer class="tweet--footer">
@@ -46,38 +49,9 @@
     });
   };
 
-
-  $(document).ready(function() {
-    $('#new-tweet-form').on('submit', function(event) {
-      event.preventDefault(); // prevent the form from submitting via HTTP
-      const formData = $(this).serialize(); // serialize the form data
-      $.post('/tweets', formData) // send the data to the server
-        .then(function() {
-          console.log('Data sent to server successfully!');
-          // Now you can update the tweet list without a page refresh
-        })
-        .catch(function(error) {
-          console.log('Error sending data to server:', error);
-        });
-    });
-  });
-
-  $(document).ready(function() {
-    const loadTweets = function() {
-      $.ajax({
-        url: '/tweets',
-        method: 'GET',
-        dataType: 'json',
-        success: function(response) {
-          renderTweets(response);
-        },
-        error: function(error) {
-          console.error(error);
-        }
-      });
-    }
-  }
-
+  // load the tweets
+  loadTweets();
+  /*  form submission using jQuery */
   $("#formTweet").submit(function (event) {
     let maxTweetVal = 140;
     let tweet = $("#form_textarea").val().length;
@@ -111,3 +85,4 @@
     }
     event.preventDefault();
   });
+});
